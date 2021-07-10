@@ -10,16 +10,16 @@ using UnityEngine.AI;
 
 
 public class Mover : MonoBehaviour
-{ 
-	/**
+{
+    /**
 	*  VARIABLES
 	* */
-	// Constant
+    // Constant
 
 
 
-	// Public
-
+    // Public
+    Ray lastRay;
 
 
 	// Serialized
@@ -34,12 +34,36 @@ public class Mover : MonoBehaviour
 	* */
 	private void Start()
 	{
-
 	}
+
 
 
 	private void Update()
 	{
-		GetComponent<NavMeshAgent>().destination = target.position;
-	}
+        // Did user click the left mouse button
+        if(Input.GetMouseButtonDown(0))
+        {
+            MoveToCursor();
+        }
+
+    }
+
+
+
+    private void MoveToCursor()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+
+        
+        bool hasHit = Physics.Raycast(ray, out hit);
+
+
+        // If we hit something with our click then send the player
+        if(hasHit)
+        {
+            GetComponent<NavMeshAgent>().destination = hit.point;
+        }
+    }
 }
