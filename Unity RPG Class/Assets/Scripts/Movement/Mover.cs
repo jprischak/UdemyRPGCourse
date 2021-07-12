@@ -41,35 +41,20 @@ public class Mover : MonoBehaviour
 
 	private void Update()
 	{
-        // Did user click the left mouse button
-        if(Input.GetMouseButton(0))
-        {
-            MoveToCursor();
-        }
-
+        
         UpdateAnimator();
 
     }
 
 
 
-    private void MoveToCursor()
+   
+
+
+    public void MoveTo(Vector3 destination)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-
-        
-        bool hasHit = Physics.Raycast(ray, out hit);
-
-
-        // If we hit something with our click then send the player
-        if(hasHit)
-        {
-            GetComponent<NavMeshAgent>().destination = hit.point;
-        }
+        GetComponent<NavMeshAgent>().destination = destination;
     }
-
 
 
     private void UpdateAnimator()
