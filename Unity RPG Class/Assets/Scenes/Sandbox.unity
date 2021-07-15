@@ -1196,6 +1196,10 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
+      propertyPath: weaponRange
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6253172629141376689, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: m_RootOrder
       value: 2
