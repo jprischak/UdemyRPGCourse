@@ -24,7 +24,7 @@ namespace RPG.CoreFeatures
 
 
         // Private
-        private MonoBehaviour currentAction;
+        private IAction currentAction;
 
 
 
@@ -33,14 +33,14 @@ namespace RPG.CoreFeatures
         /**
         *  CLASS FUNCTIONS
         * */
-        public void StartAction(MonoBehaviour action) 
+        public void StartAction(IAction action) 
         {
             // If our current action is the same as last action then don't do anything
             if(currentAction == action) return;
 
 
             if(currentAction != null)
-                print("Cancelling " + action);
+                currentAction.Cancel();
                 
     
             currentAction = action;

@@ -9,7 +9,7 @@ namespace RPG.Combat
 {
 
 
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
         /**
         *  VARIABLES
@@ -53,7 +53,7 @@ namespace RPG.Combat
                 GetComponent<Mover>().MoveTo(targetTransform.position);
             }
             else 
-                GetComponent<Mover>().Stop();   
+                GetComponent<Mover>().Cancel();   
         }
 
 
