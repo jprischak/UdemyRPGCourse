@@ -36,10 +36,7 @@ namespace RPG.Combat
         /**
         *  CLASS FUNCTIONS
         * */
-        private void Start()
-        {
-
-        }
+        
 
 
         private void Update()
@@ -53,10 +50,17 @@ namespace RPG.Combat
                 GetComponent<Mover>().MoveTo(targetTransform.position);
             }
             else 
-                GetComponent<Mover>().Cancel();   
+            { 
+                GetComponent<Mover>().Cancel();  
+                AttackBehaviour();
+            } 
         }
 
 
+        private void AttackBehaviour()
+        {
+            GetComponent<Animator>().SetTrigger("attack");
+        }
 
 
 
@@ -79,6 +83,12 @@ namespace RPG.Combat
         }
 
 
+        // Called from animator
+        public void Hit() 
+        {
+
+        }
+          
       
 
     }
