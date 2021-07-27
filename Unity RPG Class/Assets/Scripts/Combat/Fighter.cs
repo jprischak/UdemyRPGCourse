@@ -24,23 +24,29 @@ namespace RPG.Combat
 
         // Serialized
         [SerializeField] float weaponRange = 2f;
+        [SerializeField] float timeBetweenAttacks = 1f;
+        [SerializeField] float weaponDamage = 5f;
 
 
         // Private
         private Transform targetTransform;
-
+        private float timeSinceLastAttack;
 
 
 
 
         /**
-        *  CLASS FUNCTIONS
+        *  UNITY FUNCTIONS
         * */
         
 
 
         private void Update()
         {
+            // Update our time since last attack
+            timeSinceLastAttack += Time.deltaTime;
+
+
             // If we dont have a target exit to prevent calling the stop function when trying to move
             if(targetTransform == null) return;
 
@@ -51,15 +57,36 @@ namespace RPG.Combat
             }
             else 
             { 
-                GetComponent<Mover>().Cancel();  
+                GetComponent<Mover>().Cancel();
                 AttackBehaviour();
             } 
         }
 
 
+
+
+        /**
+        *   CLASS FUNCTIONS
+        */
         private void AttackBehaviour()
         {
-            GetComponent<Animator>().SetTrigger("attack");
+            if(timeSinceLastAttack > timeBetweenAttacks)
+            {
+                // Trigger animation
+                GetComponent<Animator>().SetTrigger("attack");
+
+                // Reset our time since last attack
+                timeSinceLastAttack = 0;
+            }
+            
+        }
+
+
+        // Called from animator
+        public void Hit() 
+        {
+            Health healthComponent = targetTransform.GetComponent<Health>();
+            healthComponent.TakeDamage(weaponDamage);
         }
 
 
@@ -81,15 +108,5 @@ namespace RPG.Combat
         {
             targetTransform = null;
         }
-
-
-        // Called from animator
-        public void Hit() 
-        {
-
-        }
-          
-      
-
     }
 }
