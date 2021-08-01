@@ -20,11 +20,12 @@ namespace RPG.Combat
 
 
         // Serialized
-        [SerializeField] float health = 100f;
-
+        [SerializeField] float healthPoints = 100f;
+        
 
 
         // Private
+        private bool isDead = false;
 
 
 
@@ -34,12 +35,31 @@ namespace RPG.Combat
         /**
         *  CLASS FUNCTIONS
         * */
+        private void Die()
+        {
+            if(!isDead)
+            {
+                GetComponent<Animator>().SetTrigger("die");
+                isDead = true;
+            }
+            
+            
+            
+        }
+
         public void TakeDamage(float damage)
         {
             // Make sure that our health doesn't go below 0
-            health = Mathf.Max(health - damage, 0);
+            healthPoints = Mathf.Max(healthPoints - damage, 0);
 
-            Debug.Log("Enemy Health " + health);
+            if(healthPoints == 0)
+            {
+                Die();
+            }
         }
+
+
+
+     
     }
 }

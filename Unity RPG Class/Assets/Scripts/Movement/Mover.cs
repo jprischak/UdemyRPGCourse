@@ -76,13 +76,15 @@ namespace RPG.Movement
             float speed = localVelocity.z;
 
             // Store our speed variable in the animator variable
-            GetComponent<Animator>().SetFloat("ForwardSpeed", speed);
+            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+            
         }
 
 
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
+            GetComponent<Animator>().SetTrigger("stopAttacking");
             MoveTo(destination);
         }
 
