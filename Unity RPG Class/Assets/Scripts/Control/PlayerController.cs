@@ -89,8 +89,11 @@ namespace RPG.Control
             foreach (RaycastHit hit in hits)
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+                if(target == null) continue;
 
-                if(!GetComponent<Fighter>().CanAttack(target))
+
+
+                if(!GetComponent<Fighter>().CanAttack(target.gameObject))
                 {
                     continue;
                 }
@@ -99,7 +102,7 @@ namespace RPG.Control
                 if(Input.GetMouseButtonDown(0))
                 {
                     // Call our attack function of our fighter script
-                    GetComponent<Fighter>().Attack(target);
+                    GetComponent<Fighter>().Attack(target.gameObject);
                 }
 
                 return true;
