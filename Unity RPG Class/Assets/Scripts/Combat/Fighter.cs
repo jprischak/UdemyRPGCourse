@@ -31,7 +31,7 @@ namespace RPG.Combat
 
 
         // Private
-        private Transform targetTransform;
+        private Health targetHealth;
         private float timeSinceLastAttack;
 
 
@@ -50,12 +50,18 @@ namespace RPG.Combat
 
 
             // If we dont have a target exit to prevent calling the stop function when trying to move
-            if(targetTransform == null) return;
+            if(targetHealth == null) return;
 
 
-            if(targetTransform != null && !GetIsInRange())
+            // If our target is already dead quick attacking them
+            if(targetHealth.IsDead()) return;
+
+
+
+
+            if(targetHealth != null && !GetIsInRange())
             {
-                GetComponent<Mover>().MoveTo(targetTransform.position);
+                GetComponent<Mover>().MoveTo(targetHealth.transform.position);
             }
             else 
             { 
@@ -72,43 +78,72 @@ namespace RPG.Combat
         */
         private void AttackBehaviour()
         {
+
+            // Make sure that we are looking at our target
+            transform.LookAt(targetHealth.transform);
+
             if(timeSinceLastAttack > timeBetweenAttacks)
             {
-                // Trigger animation
-                GetComponent<Animator>().SetTrigger("attack");
-
+                TriggerAttack();
                 // Reset our time since last attack
                 timeSinceLastAttack = 0;
             }
-            
+
+        }
+
+        private void TriggerAttack()
+        {
+            // Trigger animation
+            GetComponent<Animator>().ResetTrigger("stopAttacking");
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
 
         // Called from animator
         public void Hit() 
         {
-            Health healthComponent = targetTransform.GetComponent<Health>();
-            healthComponent.TakeDamage(weaponDamage);
+            if(targetHealth == null)
+                return;
+                
+            targetHealth.TakeDamage(weaponDamage);
         }
 
 
 
         private bool GetIsInRange()
         {   
-            return (Vector3.Distance(transform.position, targetTransform.position) < weaponRange);
+            return (Vector3.Distance(transform.position, targetHealth.transform.position) < weaponRange);
+        }
+
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            // If our hit item doesnt have a combatTarget script attached to it then go to next item
+            if (combatTarget == null) 
+                return false;
+
+            Health targetToTest = combatTarget.GetComponent<Health>();
+
+            return targetToTest != null && !targetToTest.IsDead();
         }
 
 
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            targetTransform = combatTarget.transform;
+            targetHealth = combatTarget.GetComponent<Health>();
         }
 
 
         public void Cancel()
         {
-            targetTransform = null;
+            StopAttack();
+            targetHealth = null;
+        }
+
+        private void StopAttack()
+        {
+            GetComponent<Animator>().SetTrigger("stopAttacking");
+            GetComponent<Animator>().ResetTrigger("attack");
         }
     }
 }

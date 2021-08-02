@@ -90,8 +90,10 @@ namespace RPG.Control
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
 
-                // If our hit item doesnt have a combatTarget script attached to it then go to next item
-                if (target == null) continue;
+                if(!GetComponent<Fighter>().CanAttack(target))
+                {
+                    continue;
+                }
 
                 // Check to see if we clicked
                 if(Input.GetMouseButtonDown(0))

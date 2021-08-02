@@ -59,6 +59,12 @@ namespace RPG.Combat
         }
 
 
+        public bool IsDead()
+        {
+            return isDead;
+        }
+
+
 
      
     }
