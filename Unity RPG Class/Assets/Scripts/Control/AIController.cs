@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Combat;
+using RPG.CoreFeatures;
 
 
 namespace RPG.Control
@@ -27,6 +28,7 @@ namespace RPG.Control
         // Private
         private Fighter fighter;
         private GameObject player;
+        private Health health;
 
 
 
@@ -40,11 +42,16 @@ namespace RPG.Control
         {
             fighter = GetComponent<Fighter>();
             player = GameObject.FindWithTag("Player");
+            health = GetComponent<Health>();
         }
 
 
         private void Update()
         {
+            // Check to see if we are dead
+            if(health.IsDead()) return;
+
+
             if(InAttackRange(player) && fighter.CanAttack(player))
             {
                 fighter.Attack(player);
