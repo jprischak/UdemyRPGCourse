@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Combat;
 using RPG.CoreFeatures;
+using RPG.Movement;
 
 
 namespace RPG.Control
@@ -27,9 +28,11 @@ namespace RPG.Control
 
         // Private
         private Fighter fighter;
+        private Mover mover;
         private GameObject player;
         private Health health;
 
+        private Vector3 gaurdLocation;
 
 
 
@@ -43,6 +46,9 @@ namespace RPG.Control
             fighter = GetComponent<Fighter>();
             player = GameObject.FindWithTag("Player");
             health = GetComponent<Health>();
+            mover = GetComponent<Mover>();
+
+            gaurdLocation = transform.position;
         }
 
 
@@ -58,8 +64,15 @@ namespace RPG.Control
             }
             else
             {
-                fighter.Cancel();
+                mover.StartMoveAction(gaurdLocation);
             }
+
+        }
+
+        private void OnDrawGizmosSelected()    
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, chaseDistance);
 
         }
 
