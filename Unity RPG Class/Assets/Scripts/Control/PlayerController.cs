@@ -103,7 +103,7 @@ namespace RPG.Control
                 }
 
                 // Check to see if we clicked
-                if(Input.GetMouseButtonDown(0))
+                if(Input.GetMouseButton(0))
                 {
                     // Call our attack function of our fighter script
                     GetComponent<Fighter>().Attack(target.gameObject);
