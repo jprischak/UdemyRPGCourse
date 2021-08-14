@@ -32,7 +32,7 @@ namespace RPG.Combat
 
         // Private
         private Health targetHealth;
-        private float timeSinceLastAttack;
+        private float timeSinceLastAttack = Mathf.Infinity;
 
 
 
@@ -104,7 +104,7 @@ namespace RPG.Combat
         {
             if(targetHealth == null)
                 return;
-                
+
             targetHealth.TakeDamage(weaponDamage);
         }
 
@@ -115,7 +115,7 @@ namespace RPG.Combat
             return (Vector3.Distance(transform.position, targetHealth.transform.position) < weaponRange);
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             // If our hit item doesnt have a combatTarget script attached to it then go to next item
             if (combatTarget == null) 
@@ -127,7 +127,7 @@ namespace RPG.Combat
         }
 
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             targetHealth = combatTarget.GetComponent<Health>();

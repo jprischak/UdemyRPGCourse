@@ -46,5 +46,10 @@ namespace RPG.CoreFeatures
             currentAction = action;
            
         }
+
+        public void CancelAction()
+        {
+            StartAction(null);
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
+using RPG.CoreFeatures;
 
 
 namespace RPG.Control
@@ -22,7 +23,7 @@ namespace RPG.Control
 
 
         // Private
-
+        private Health health;
 
 
 
@@ -33,12 +34,15 @@ namespace RPG.Control
         * */
         private void Start()
         {
-
+            health = GetComponent<Health>();
         }
 
 
         private void Update()
         {
+            // Check to see if we are dead
+            if(health.IsDead()) return;
+
             if(InteracteWithCombat()) return;
 
             if(InteracteWithMovement()) return;
@@ -89,17 +93,20 @@ namespace RPG.Control
             foreach (RaycastHit hit in hits)
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+                if(target == null) continue;
 
-                if(!GetComponent<Fighter>().CanAttack(target))
+
+
+                if(!GetComponent<Fighter>().CanAttack(target.gameObject))
                 {
                     continue;
                 }
 
                 // Check to see if we clicked
-                if(Input.GetMouseButtonDown(0))
+                if(Input.GetMouseButton(0))
                 {
                     // Call our attack function of our fighter script
-                    GetComponent<Fighter>().Attack(target);
+                    GetComponent<Fighter>().Attack(target.gameObject);
                 }
 
                 return true;

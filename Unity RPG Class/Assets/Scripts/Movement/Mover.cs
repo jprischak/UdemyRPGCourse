@@ -30,6 +30,7 @@ namespace RPG.Movement
 
         // Private
         private NavMeshAgent navMeshAgent;
+        private Health health;
 
 
 
@@ -39,11 +40,15 @@ namespace RPG.Movement
         private void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            health = GetComponent<Health>();
         }
 
 
         private void Update()
         {
+            // If player is dead disable nav mesh agent
+            navMeshAgent.enabled = !health.IsDead();
+
             UpdateAnimator();
         }
 
