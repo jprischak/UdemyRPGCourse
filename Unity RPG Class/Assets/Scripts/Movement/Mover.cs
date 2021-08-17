@@ -26,7 +26,6 @@ namespace RPG.Movement
 
         // Serialized
         [SerializeField] Transform target;
-        [SerializeField] float maxSpeed = 6;
 
 
         // Private
@@ -57,10 +56,9 @@ namespace RPG.Movement
 
 
 
-        public void MoveTo(Vector3 destination, float speedFraction)
+        public void MoveTo(Vector3 destination)
         {
             navMeshAgent.destination = destination;
-            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
             navMeshAgent.isStopped = false;
         }
 
@@ -88,10 +86,10 @@ namespace RPG.Movement
         }
 
 
-        public void StartMoveAction(Vector3 destination, float speedFraction)
+        public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            MoveTo(destination, speedFraction);
+            MoveTo(destination);
         }
 
         
