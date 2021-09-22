@@ -468,6 +468,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 878077879016425024, guid: aa6e3344902657d4285816071aa79b56, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 58c2f4b3-78af-410e-a6e1-c8176f156bb3
+      objectReference: {fileID: 0}
     - target: {fileID: 4274467459418582295, guid: aa6e3344902657d4285816071aa79b56, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -595,6 +599,10 @@ PrefabInstance:
     - target: {fileID: 260455217725627746, guid: aa6e3344902657d4285816071aa79b56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 878077879016425024, guid: aa6e3344902657d4285816071aa79b56, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 634a72ba-0d59-4f1f-af69-7c4f8c860e21
       objectReference: {fileID: 0}
     - target: {fileID: 2419759744546794469, guid: aa6e3344902657d4285816071aa79b56, type: 3}
       propertyPath: patrolPath
@@ -1302,6 +1310,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
+    - target: {fileID: 1142371957856588897, guid: c4a354479606517468168c13564ac11f, type: 3}
+      propertyPath: uniqueIdentifier
+      value: f48aeb9f-aeaf-44a9-8275-2819b5efb7b5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805447420706679086, guid: c4a354479606517468168c13564ac11f, type: 3}
+      propertyPath: uniqueIdentifier
+      value: aba42c75-6934-4f74-b228-f2bd33f03716
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4a354479606517468168c13564ac11f, type: 3}
 --- !u!4 &1063071090421567280
@@ -1442,6 +1458,10 @@ PrefabInstance:
     - target: {fileID: 260455217725627746, guid: aa6e3344902657d4285816071aa79b56, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 878077879016425024, guid: aa6e3344902657d4285816071aa79b56, type: 3}
+      propertyPath: uniqueIdentifier
+      value: c83e0e6d-aecd-4d31-bc9a-0aedd187f7b7
       objectReference: {fileID: 0}
     - target: {fileID: 2419759744546794469, guid: aa6e3344902657d4285816071aa79b56, type: 3}
       propertyPath: patrolPath
