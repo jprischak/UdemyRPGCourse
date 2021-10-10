@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Saving;
 
 namespace RPG.CoreFeatures
 {
     
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, ISaveable
     {
 
         /**
@@ -48,6 +49,7 @@ namespace RPG.CoreFeatures
             
         }
 
+
         public void TakeDamage(float damage)
         {
             // Make sure that our health doesn't go below 0
@@ -66,7 +68,20 @@ namespace RPG.CoreFeatures
         }
 
 
+        // Used for saving
+        public object CaptureState()
+        {
+            return healthPoints;
+        }
 
-     
+        // Used for loading
+        public void RestoreState(object state)
+        {
+            healthPoints = (float) state;
+
+            // Check to see if we are dead
+            if (healthPoints <= 0)
+                Die();
+        }
     }
 }

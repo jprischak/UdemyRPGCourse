@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637646583186743508
+      ticks: 637647592863175692
     m_Hash: 1667719234
   m_LockFileStatus:
     m_FilePath: D:/Developers/Files/Unity RPG Class/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637646583187445147
+      ticks: 637647592863965659
     m_Hash: 3919287691
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

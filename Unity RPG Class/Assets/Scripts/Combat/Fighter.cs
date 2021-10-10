@@ -61,7 +61,7 @@ namespace RPG.Combat
 
             if(targetHealth != null && !GetIsInRange())
             {
-                GetComponent<Mover>().MoveTo(targetHealth.transform.position, 1f);
+                GetComponent<Mover>().MoveTo(targetHealth.transform.position);
             }
             else 
             { 
