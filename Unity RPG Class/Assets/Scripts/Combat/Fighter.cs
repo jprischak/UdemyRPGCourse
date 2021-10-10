@@ -28,6 +28,8 @@ namespace RPG.Combat
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] float weaponDamage = 5f;
+        [SerializeField] GameObject weaponPrefab = null;
+        [SerializeField] Transform handTransform = null;
 
 
         // Private
@@ -40,7 +42,10 @@ namespace RPG.Combat
         /**
         *  UNITY FUNCTIONS
         * */
-        
+        private void Start()
+        {
+            SpawnWeapon();
+        }
 
 
         private void Update()
@@ -109,7 +114,6 @@ namespace RPG.Combat
         }
 
 
-
         private bool GetIsInRange()
         {   
             return (Vector3.Distance(transform.position, targetHealth.transform.position) < weaponRange);
@@ -144,6 +148,11 @@ namespace RPG.Combat
         {
             GetComponent<Animator>().SetTrigger("stopAttacking");
             GetComponent<Animator>().ResetTrigger("attack");
+        }
+
+        private void SpawnWeapon()
+        {
+            Instantiate(weaponPrefab, handTransform);
         }
     }
 }
