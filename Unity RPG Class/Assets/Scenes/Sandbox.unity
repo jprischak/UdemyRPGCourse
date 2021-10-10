@@ -1310,15 +1310,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
-    - target: {fileID: 1142371957856588897, guid: c4a354479606517468168c13564ac11f, type: 3}
-      propertyPath: uniqueIdentifier
-      value: f48aeb9f-aeaf-44a9-8275-2819b5efb7b5
-      objectReference: {fileID: 0}
     - target: {fileID: 5805447420706679086, guid: c4a354479606517468168c13564ac11f, type: 3}
       propertyPath: uniqueIdentifier
       value: aba42c75-6934-4f74-b228-f2bd33f03716
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5805447420706679086, guid: c4a354479606517468168c13564ac11f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c4a354479606517468168c13564ac11f, type: 3}
 --- !u!4 &1063071090421567280
 Transform:

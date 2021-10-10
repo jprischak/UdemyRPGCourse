@@ -178,10 +178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
-    - target: {fileID: 1142371957856588897, guid: c4a354479606517468168c13564ac11f, type: 3}
-      propertyPath: uniqueIdentifier
-      value: f6ec9053-9efb-4926-ad7f-18fb1ef38391
-      objectReference: {fileID: 0}
     - target: {fileID: 5805447420706679086, guid: c4a354479606517468168c13564ac11f, type: 3}
       propertyPath: uniqueIdentifier
       value: 661ff441-2efb-458e-914d-1b04447e8239
