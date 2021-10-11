@@ -40,6 +40,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 5
   suspicionTime: 5
+  patrolPath: {fileID: 0}
+  waypointTolerance: 1
+  waypointDwellTime: 3
 --- !u!1001 &5087532063406158564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,6 +100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &5087532063406226272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 5087532063406158564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6150485268668617683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,9 +125,17 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: f1d3a4cdb57ad4446b80d4bb2601f824, type: 2}
+    - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: weaponRange
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 5087532063406226272}
     - target: {fileID: 6253172629141376689, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: m_RootOrder
       value: 0

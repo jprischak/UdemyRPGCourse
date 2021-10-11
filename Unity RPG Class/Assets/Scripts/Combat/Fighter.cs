@@ -5,6 +5,7 @@ using RPG.CoreFeatures;
 using RPG.Movement;
 
 
+
 namespace RPG.Combat
 {
 
@@ -25,9 +26,7 @@ namespace RPG.Combat
 
 
         // Serialized
-        [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] float weaponDamage = 5f;
         [SerializeField] Weapon weapon = null;
         [SerializeField] Transform handTransform = null;
 
@@ -103,6 +102,19 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("attack");
         }
 
+        private bool GetIsInRange()
+        {
+            return (Vector3.Distance(transform.position, targetHealth.transform.position) < weapon.GetWeaponRange());
+        }
+
+        private void StopAttack()
+        {
+            GetComponent<Animator>().SetTrigger("stopAttacking");
+            GetComponent<Animator>().ResetTrigger("attack");
+        }
+
+
+
 
         // Called from animator
         public void Hit() 
@@ -110,15 +122,8 @@ namespace RPG.Combat
             if(targetHealth == null)
                 return;
 
-            targetHealth.TakeDamage(weaponDamage);
-        }
-
-
-
-        private bool GetIsInRange()
-        {   
-            return (Vector3.Distance(transform.position, targetHealth.transform.position) < weaponRange);
-        }
+            targetHealth.TakeDamage(weapon.GetDamage());
+        }   
 
         public bool CanAttack(GameObject combatTarget)
         {
@@ -131,24 +136,16 @@ namespace RPG.Combat
             return targetToTest != null && !targetToTest.IsDead();
         }
 
-
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             targetHealth = combatTarget.GetComponent<Health>();
         }
 
-
         public void Cancel()
         {
             StopAttack();
             targetHealth = null;
-        }
-
-        private void StopAttack()
-        {
-            GetComponent<Animator>().SetTrigger("stopAttacking");
-            GetComponent<Animator>().ResetTrigger("attack");
         }
 
         public void SpawnWeapon()
