@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!136 &7932456532329131802
+--- !u!136 &322147113
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,11 +10,11 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.79
+  m_Radius: 0.28
+  m_Height: 2.08
   m_Direction: 1
-  m_Center: {x: 0, y: 0.82, z: 0}
---- !u!114 &4813222980524974462
+  m_Center: {x: 0, y: 0.92, z: 0}
+--- !u!114 &-4024266637321733866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -26,6 +26,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9c53c56a074444581d7384f712df28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &736747027011638941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7065193153420378245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: Player
 --- !u!1001 &866810983836597825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33,49 +46,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5830133795214809414, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
-      propertyPath: healthPoints
-      value: 200
+    - target: {fileID: 441572401, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 11400000, guid: 95ec6d514b556ef46b0597fdddd6598b, type: 2}
+      objectReference: {fileID: 11400000, guid: c674af91d1dda314ba5dfb4ddfdcc1d0, type: 2}
     - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: weaponRange
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
-      propertyPath: weaponDamage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
-      propertyPath: weaponPrefab
-      value: 
-      objectReference: {fileID: 621647796385237628, guid: ee581585f8296164aab84736b12b3e19, type: 3}
-    - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: handTransform
       value: 
       objectReference: {fileID: 5130521438960279144}
-    - target: {fileID: 2645461239390821198, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
-      propertyPath: weaponOverride
-      value: 
-      objectReference: {fileID: 22100000, guid: 3bd48043bc3f0e64eb33a55af54aba14, type: 2}
     - target: {fileID: 6253172629141376689, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6253172629141376689, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.385815
+      value: -0.67876816
       objectReference: {fileID: 0}
     - target: {fileID: 6253172629141376689, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.688416
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6253172629141376689, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.26
+      value: 29.62
       objectReference: {fileID: 0}
     - target: {fileID: 6253172629141376689, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
       propertyPath: m_LocalRotation.w
@@ -113,7 +114,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6446171615593174419, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4dcb00d454bad03498e05dc32826cd75, type: 3}
 --- !u!1 &7065193153420378245 stripped
 GameObject:

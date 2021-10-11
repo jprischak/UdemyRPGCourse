@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22fc91022f251d3499b75c556d92458e, type: 3}
+  m_Script: {fileID: 11500000, guid: c490c97d7db679341aeaa3826060f0b7, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  animatorOverride: {fileID: 22100000, guid: 3bd48043bc3f0e64eb33a55af54aba14, type: 2}
-  weaponPrefab: {fileID: 621647796385237628, guid: ee581585f8296164aab84736b12b3e19, type: 3}
+  animatorOverride: {fileID: 22100000, guid: 90b65a0fad5cb0c48830859b32382b95, type: 2}
+  weaponPrefab: {fileID: 1912981781728427536, guid: ba4e1cbbbd95ca844b760e99d7396ec0, type: 3}

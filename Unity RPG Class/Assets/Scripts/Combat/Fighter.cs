@@ -30,7 +30,6 @@ namespace RPG.Combat
         [SerializeField] float weaponDamage = 5f;
         [SerializeField] Weapon weapon = null;
         [SerializeField] Transform handTransform = null;
-        
 
 
         // Private
@@ -67,7 +66,7 @@ namespace RPG.Combat
 
             if(targetHealth != null && !GetIsInRange())
             {
-                GetComponent<Mover>().MoveTo(targetHealth.transform.position, 1f);
+                GetComponent<Mover>().MoveTo(targetHealth.transform.position);
             }
             else 
             { 
@@ -115,6 +114,7 @@ namespace RPG.Combat
         }
 
 
+
         private bool GetIsInRange()
         {   
             return (Vector3.Distance(transform.position, targetHealth.transform.position) < weaponRange);
@@ -151,12 +151,13 @@ namespace RPG.Combat
             GetComponent<Animator>().ResetTrigger("attack");
         }
 
-        private void SpawnWeapon()
+        public void SpawnWeapon()
         {
             if (weapon == null) return;
 
             Animator animator = GetComponent<Animator>();
             weapon.Spawn(handTransform, animator);
         }
+
     }
 }

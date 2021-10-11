@@ -79,18 +79,15 @@ m_PackageAssets:
         - 2.6.4
         - 2.6.5
         - 2.6.9
-        - 2.6.10
         - 2.7.1
         - 2.7.2
         - 2.7.3
         - 2.7.4
         - 2.7.5
-        - 2.7.8
         - 2.8.0-exp.1
         - 2.8.0-exp.2
         - 2.8.0-pre.1
         - 2.8.0
-        - 2.8.1
         compatible:
         - 2.5.0
         - 2.6.0-preview.2
@@ -107,19 +104,16 @@ m_PackageAssets:
         - 2.6.4
         - 2.6.5
         - 2.6.9
-        - 2.6.10
         - 2.7.1
         - 2.7.2
         - 2.7.3
         - 2.7.4
         - 2.7.5
-        - 2.7.8
         - 2.8.0-exp.1
         - 2.8.0-exp.2
         - 2.8.0-pre.1
         - 2.8.0
-        - 2.8.1
-        verified: 2.6.10
+        verified: 2.6.9
       dependencies: []
       resolvedDependencies: []
       keywords:
@@ -211,10 +205,6 @@ m_PackageAssets:
         - 1.7.1
         - 1.8.0
         - 1.9.0
-        - 1.10.2
-        - 1.11.2
-        - 1.12.5
-        - 1.13.5
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -229,10 +219,6 @@ m_PackageAssets:
         - 1.7.1
         - 1.8.0
         - 1.9.0
-        - 1.10.2
-        - 1.11.2
-        - 1.12.5
-        - 1.13.5
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -511,7 +497,6 @@ m_PackageAssets:
         - 1.2.1
         - 1.2.2
         - 1.2.3
-        - 1.2.4
         compatible:
         - 1.0.2
         - 1.0.3
@@ -524,8 +509,7 @@ m_PackageAssets:
         - 1.2.1
         - 1.2.2
         - 1.2.3
-        - 1.2.4
-        verified: 1.2.4
+        verified: 1.2.3
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -599,11 +583,9 @@ m_PackageAssets:
         - 1.1.24
         - 1.1.26
         - 1.1.27
-        - 1.1.29
         compatible:
         - 1.1.27
-        - 1.1.29
-        verified: 1.1.29
+        verified: 1.1.27
       dependencies:
       - name: com.unity.ext.nunit
         version: 1.0.6

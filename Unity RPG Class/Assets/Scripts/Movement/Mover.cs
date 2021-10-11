@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.CoreFeatures;
+using RPG.Saving;
 
 
 
@@ -11,7 +12,7 @@ namespace RPG.Movement
 {
 
 
-    public class Mover : MonoBehaviour, IAction
+    public class Mover : MonoBehaviour, IAction, ISaveable
     {
         /**
         *  VARIABLES
@@ -26,7 +27,6 @@ namespace RPG.Movement
 
         // Serialized
         [SerializeField] Transform target;
-        [SerializeField] float maxSpeed = 6;
 
 
         // Private
@@ -56,21 +56,9 @@ namespace RPG.Movement
 
 
 
-
-        public void MoveTo(Vector3 destination, float speedFraction)
-        {
-            navMeshAgent.destination = destination;
-            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
-            navMeshAgent.isStopped = false;
-        }
-
-
-        public void Cancel()
-        {
-            navMeshAgent.isStopped = true;
-        }
-
-
+        /*
+         *  FUNCTIONS
+         * */
         private void UpdateAnimator()
         {
             // This gets our velocity from the navMeshAgent
@@ -84,17 +72,46 @@ namespace RPG.Movement
 
             // Store our speed variable in the animator variable
             GetComponent<Animator>().SetFloat("forwardSpeed", speed);
-            
+
         }
 
 
-        public void StartMoveAction(Vector3 destination, float speedFraction)
+        public void MoveTo(Vector3 destination)
+        {
+            navMeshAgent.destination = destination;
+            navMeshAgent.isStopped = false;
+        }
+
+
+        public void Cancel()
+        {
+            navMeshAgent.isStopped = true;
+        }
+
+
+        public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            MoveTo(destination, speedFraction);
+            MoveTo(destination);
         }
 
-        
 
+        public object CaptureState()
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["position"] = new SerializableVector3(transform.position);
+            data["rotation"] = new SerializableVector3(transform.eulerAngles);
+            return data;
+        }
+
+
+        public void RestoreState(object state)
+        {
+            Dictionary<string, object> data = (Dictionary<string, object>)state;
+            GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = ((SerializableVector3)data["position"]).ToVector();
+            transform.eulerAngles = ((SerializableVector3)data["rotation"]).ToVector();
+            GetComponent<NavMeshAgent>().enabled = true;
+        }
     }
 }
