@@ -22,18 +22,20 @@ namespace RPG.Combat
 
 
         // Public
-
+        public Weapon currentWeapon = null;
+        public Health targetHealth;
 
 
         // Serialized
-        [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] Weapon weapon = null;
-        [SerializeField] Transform handTransform = null;
+        [SerializeField] float      timeBetweenAttacks  = 1f;
+        [SerializeField] Transform  rightHandTransform  = null;
+        [SerializeField] Transform  leftHandTransform   = null;
+        [SerializeField] Weapon     defaultWeapon       = null;
 
 
         // Private
-        private Health targetHealth;
-        private float timeSinceLastAttack = Mathf.Infinity;
+        private float   timeSinceLastAttack     = Mathf.Infinity;
+        
 
 
 
@@ -43,7 +45,7 @@ namespace RPG.Combat
         * */
         private void Start()
         {
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
 
 
@@ -104,7 +106,7 @@ namespace RPG.Combat
 
         private bool GetIsInRange()
         {
-            return (Vector3.Distance(transform.position, targetHealth.transform.position) < weapon.GetWeaponRange());
+            return (Vector3.Distance(transform.position, targetHealth.transform.position) < currentWeapon.GetWeaponRange());
         }
 
         private void StopAttack()
@@ -116,14 +118,27 @@ namespace RPG.Combat
 
 
 
-        // Called from animator
+        // Called from the animator
         public void Hit() 
         {
             if(targetHealth == null)
                 return;
 
-            targetHealth.TakeDamage(weapon.GetDamage());
+            if(currentWeapon.HasProjectile())
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, targetHealth);
+           
+            else
+                targetHealth.TakeDamage(currentWeapon.GetDamage());
+
+
         }   
+
+        // Called from the animator
+        public void Shoot()
+        {
+            Hit();
+        }
+
 
         public bool CanAttack(GameObject combatTarget)
         {
@@ -136,11 +151,13 @@ namespace RPG.Combat
             return targetToTest != null && !targetToTest.IsDead();
         }
 
+
         public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             targetHealth = combatTarget.GetComponent<Health>();
         }
+
 
         public void Cancel()
         {
@@ -148,12 +165,13 @@ namespace RPG.Combat
             targetHealth = null;
         }
 
-        public void SpawnWeapon()
+
+        public void EquipWeapon(Weapon weapon)
         {
-            if (weapon == null) return;
+            currentWeapon = weapon;
 
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(handTransform, animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
     }
